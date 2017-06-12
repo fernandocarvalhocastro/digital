@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="corpo">
+	   <h1>Cadastro de Especialidade</h1>
+	   <h:form>
+	   		<h:inputHidden value="#{cadastrarEspecialidadeBean.especialidade.codigo}" id="codigo" />
+	   		<div class="form-group">
+			   	<h:outputLabel value="Nome: " for="nome" />
+			   	<h:inputText value="#{cadastrarEspecialidadeBean.especialidade.nome}" id="nome" styleClass="form-control"/>
+		   	</div>
+		   	<div class="form-group">
+			   	<h:outputLabel value="Descrição: " for="descricao" />
+			   	<h:inputText value="#{cadastrarEspecialidadeBean.especialidade.descricao}" id="descricao" styleClass="form-control"/>
+		   	</div>
+		  	<div class="form-group">
+			   	<h:selectBooleanCheckbox value="#{cadastrarEspecialidadeBean.especialidade.certificado}" id="certificado"/>
+			   	<h:outputLabel value="certificado " for="certificado" />
+		   	</div>
+		   	<div class="form-group">
+		   		<h:commandButton action="#{cadastrarEspecialidadeBean.cadastrar()}" value="Cadastrar" styleClass="btn btn-primary"/>
+		   	</div>
+	   </h:form>
+	</ui:define>
+</ui:composition>
+</html>

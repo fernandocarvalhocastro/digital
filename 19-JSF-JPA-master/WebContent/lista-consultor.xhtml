@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="corpo">
+		<h1>Listar Consultores</h1>
+				<h:messages errorClass="alert alert-danger"
+					infoClass="alert alert-success" />
+		<h:dataTable styleClass="table table-hover" value="#{listaConsultorBean.consultores}" var="c">
+			<h:column>
+				<f:facet name="header">Código</f:facet>
+				#{c.codigo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">CPF</f:facet>
+				#{c.cpf}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				#{c.nome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Telefone</f:facet>
+				#{c.telefone}
+			</h:column>
+			<h:column>
+				<h:form>
+					<h:commandButton style="margin-right:10px" styleClass="btn btn-info" action="index" value="Alterar">
+						<f:setPropertyActionListener value="#{c}" target="#{consultorBean.consultor}" />
+					</h:commandButton>
+					<h:commandButton styleClass="btn btn-danger" action="#{listaConsultorBean.excluir(c.codigo)}" value="Excluir"/>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+   </ui:define>
+</ui:composition> 
+</html>

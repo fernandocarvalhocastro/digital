@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="corpo">
+	  <h1>#{consultorBean.consultor.codigo == 0 ? 'Cadastrar' : 'Alterar'} Consultor</h1>
+		<h:form>
+		<h:inputHidden value="#{consultorBean.consultor.codigo}" />
+		<h:messages errorClass="alert alert-danger"
+					infoClass="alert alert-success" />
+		<!-- Nome, cpf e telefone -->
+			<div class="form-group">
+				<h:outputLabel value="Nome: " for="nome"/>
+				<h:inputText value="#{consultorBean.consultor.nome}" id="nome"  styleClass="form-control"/>
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="CPF: " for="cpf"/>
+				<h:inputText value="#{consultorBean.consultor.cpf}" id="cpf" styleClass="form-control"/>
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Telefone: " for="telefone" />
+				<h:inputText value="#{consultorBean.consultor.telefone}" id="telefone" styleClass="form-control"/>
+			</div>
+			<div class="form-group">
+				<h:commandButton action="#{consultorBean.cadastrar()}" value="Salvar" styleClass="btn btn-info"/>
+				<h:link rendered="#{consultorBean.consultor.codigo !=0}" style="margin-left:10px" outcome="lista-consultor" styleClass="btn btn-default">Voltar</h:link>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

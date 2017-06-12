@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="corpo">
+		<h1>Lista de Especialidades</h1>
+		<h:messages errorClass="alert alert-danger"
+					infoClass="alert alert-success"/>
+		<h:dataTable styleClass="table table-hover" var="e" value="#{listaEspecialidadeBean.especialidades}">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				#{e.codigo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				#{e.nome}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Descrição</f:facet>
+				#{e.descricao}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Certificado</f:facet>
+				#{e.certificado}
+			</h:column>
+			<h:column>
+			<h:form>
+				<h:commandButton styleClass="btn btn-info" action="cadastro-especialidade" value="Alterar">
+					<f:setPropertyActionListener value="#{e}" target="#{cadastrarEspecialidadeBean.especialidade}" />
+				</h:commandButton>
+				<h:commandButton style="margin-left:10px" styleClass="btn btn-danger" action="#{listaEspecialidadeBean.apagar(e.codigo)}" value="Apagar" />
+				
+			</h:form>
+		</h:column>
+		</h:dataTable>	
+
+
+	</ui:define>
+</ui:composition>
+</html>
